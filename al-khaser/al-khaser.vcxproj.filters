@@ -265,6 +265,9 @@
     <ClInclude Include="AntiDebug\NtGlobalFlag.h">
       <Filter>AntiDebug\Header</Filter>
     </ClInclude>
+    <ClInclude Include="ATAIdentify.h">
+      <Filter>Shared\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="al-khaser.cpp" />
@@ -439,6 +442,9 @@
     </ClCompile>
     <ClCompile Include="AntiDebug\BeingDebugged.cpp">
       <Filter>AntiDebug\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\ATAIdentify.cpp">
+      <Filter>Shared\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

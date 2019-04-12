@@ -1185,3 +1185,94 @@ BOOL query_license_value()
 
 	return FALSE;
 }
+
+BOOL ata_identify_generic_worldwidename()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			if (idd->WorldWideName[0] +
+				idd->WorldWideName[1] +
+				idd->WorldWideName[2] +
+				idd->WorldWideName[3] == 0)
+			{
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}
+
+BOOL ata_identify_generic_commandsetsupport()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			if (idd->CommandSetSupport.SmartCommands == 0 &&
+				idd->CommandSetSupport.WriteCache == 0)
+			{
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}
+
+BOOL ata_identify_generic_wordsperlogicalsector()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			if (idd->WordsPerLogicalSector[0] == 0 &&
+				idd->WordsPerLogicalSector[1] == 0)
+			{
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}
+
+BOOL ata_identify_generic_multisectorsetting()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			if (idd->CurrentMultiSectorSetting == 0 &&
+				idd->MultiSectorSettingValid == 0)
+			{
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}
+
+BOOL ata_identify_generic_interseekdelay()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			if (idd->InterSeekDelay == 0)
+			{
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}

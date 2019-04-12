@@ -533,3 +533,60 @@ BOOL vbox_firmware_ACPI()
 	free(tableNames);
 	return result;
 }
+
+BOOL ata_identify_vbox_modelnumber()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			if (strncmp((char*)idd->ModelNumber, "VBOX HARDDISK", 13) == 0)
+			{
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}
+
+BOOL ata_identify_vbox_serialnumber()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			// serial number in the format VBxxxxxxxx-xxxxxxxx where x is a hexadecimal character
+			if (strncmp((char*)idd->SerialNumber, "VB", 2) == 0)
+			{
+				if (idd->SerialNumber[10] == '-')
+				{
+					return TRUE;
+				}
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}
+
+BOOL ata_identify_vbox_microcode()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			// VirtualBox has some odd values here (no support for microcode download, but it's enabled??) so we can detect that
+			if (idd->CommandSetSupport.DownloadMicrocode == 0 &&
+				idd->CommandSetActive.DownloadMicrocode == 1)
+			{
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}

@@ -214,6 +214,7 @@
     <ClInclude Include="AntiVM\VMWare.h" />
     <ClInclude Include="AntiVM\Wine.h" />
     <ClInclude Include="AntiVM\Xen.h" />
+    <ClInclude Include="ATAIdentify.h" />
     <ClInclude Include="CodeInjection\CreateRemoteThread.h" />
     <ClInclude Include="CodeInjection\GetSetThreadContext.h" />
     <ClInclude Include="CodeInjection\NtCreateThreadEx.h" />
@@ -295,6 +296,7 @@
     </ClCompile>
     <ClCompile Include="Shared\APIs.cpp" />
     <ClCompile Include="Shared\ApiTypeDefs.cpp" />
+    <ClCompile Include="Shared\ATAIdentify.cpp" />
     <ClCompile Include="Shared\Common.cpp" />
     <ClCompile Include="Shared\log.cpp" />
     <ClCompile Include="Shared\Utils.cpp" />

@@ -130,3 +130,37 @@ BOOL qemu_firmware_ACPI()
 	}
 	return result;
 }
+
+BOOL ata_identify_qemu_modelnumber()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			if (strncmp((char*)idd->ModelNumber, "QEMU HARDDISK", 13) == 0)
+			{
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}
+
+BOOL ata_identify_qemu_serialnumber()
+{
+	struct {
+		static BOOL callback(IDENTIFY_DEVICE_DATA* idd)
+		{
+			if (strncmp((char*)idd->SerialNumber, "QM0000", 6) == 0)
+			{
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+	} check;
+
+	return ata_identify_enum_with_callback(&check.callback);
+}

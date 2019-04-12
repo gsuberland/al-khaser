@@ -26,3 +26,8 @@ BOOL hybridanalysismacdetect();
 BOOL cpu_fan_wmi();
 BOOL caption_video_controller_wmi();
 BOOL query_license_value();
+BOOL ata_identify_generic_worldwidename();
+BOOL ata_identify_generic_commandsetsupport();
+BOOL ata_identify_generic_wordsperlogicalsector();
+BOOL ata_identify_generic_multisectorsetting();
+BOOL ata_identify_generic_interseekdelay();
