@@ -1,9 +1,15 @@
+#### 0.79
+- Add WMI video controller check.
+- Add ATA IDENTIFY generic VM checks
+- Add ATA IDENTIFY checks for VirtualBox
+- Add ATA IDENTIFY checks for QEMU / KVM
+- Fixed an issue where Al-khaser.cpp was encoded as UTF-16, preventing git diff from working properly (now UTF-8 with no BOM)
+
 #### 0.78
 - Add README and CHANGELOG to VS solution file.
 - Delete compiled binaries from repository.
 - Ignores NuGet packages directory from  git.
 - Fix false positive in VirtualBox BIOS serial number WMI check thanks to @gsuberland
-
 
 #### 0.77
 - Add a gitattributes to normalize line endings.

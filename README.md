@@ -1,4 +1,4 @@
-## Al-Khaser v0.78
+## Al-Khaser v0.79
 
 ![Logo](https://www.mindmeister.com/files/avatars/0035/8332/original/avatar.jpg)
 
@@ -210,6 +210,7 @@ Please, if you encounter any of the anti-analysis tricks which you have seen in 
     - VBOX
     - VIRTUAL HD
   - Power policies (S1-S4 states, thermal control)
+  - ATA IDENTIFY command
 - **System Firmware Tables**
   - SMBIOS string checks (VirtualBox)
   - SMBIOS string checks (VMWare)
@@ -251,6 +252,7 @@ Please, if you encounter any of the anti-analysis tricks which you have seen in 
   - SELECT * FROM Win32_ComputerSystem (Model and Manufacturer) (GENERIC)
   - SELECT * FROM MSAcpi_ThermalZoneTemperature CurrentTemperature) (GENERIC)
   - SELECT * FROM Win32_Fan (GENERIC)
+  - SELECT * FROM Win32_VideoController (HYPER-V, VMWARE)
 - **DLL Exports and Loaded DLLs**
   - avghookx.dll (AVG)
   - avghooka.dll (AVG)
